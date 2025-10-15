@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Cilantro Asset Importer",
+  "version": "1.0",
+  "description": "Import Asset(s) to Blender from https://forge.plebmasters.de/*",
+  "background": { "service_worker": "background.js" },
+  "permissions": ["scripting", "webNavigation"],
+  "host_permissions": ["https://forge.plebmasters.de/*"],
+  "icons": { "48": "icon48.png" },
+  "content_scripts": [
+    {
+      "matches": ["https://forge.plebmasters.de/objects/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
