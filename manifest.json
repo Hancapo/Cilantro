@@ -2,11 +2,15 @@
   "manifest_version": 3,
   "name": "Cilantro Asset Importer",
   "version": "1.0",
-  "description": "Import Asset(s) to Blender from https://forge.plebmasters.de/*",
+  "description": "Import Asset(s) to Blender from Forge PlebMasters",
   "background": { "service_worker": "background.js" },
-  "permissions": ["scripting", "webNavigation"],
+  "permissions": ["storage", "scripting", "webNavigation"],
   "host_permissions": ["https://forge.plebmasters.de/*"],
   "icons": { "48": "icon48.png" },
+  "action": {
+    "default_title": "Open Cilantro Config",
+    "default_popup": "options.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://forge.plebmasters.de/objects/*"],
@@ -14,5 +18,9 @@
       "css": ["styles.css"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
 }

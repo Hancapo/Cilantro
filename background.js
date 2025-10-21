@@ -4,3 +4,8 @@ chrome.webNavigation.onHistoryStateUpdated.addListener((details) => {
     files: ["content.js"]
   });
 });
+
+
+chrome.action.onClicked.addListener(() => {
+  chrome.runtime.openOptionsPage();
+});

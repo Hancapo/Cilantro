@@ -64,6 +64,8 @@ setTimeout(() => {
 }, 1000);
 
 function sendAssetName(assetName) {
+
+
   fetch("http://localhost:5000", {
     method: "POST",
     body: assetName
