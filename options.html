@@ -1,110 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Settings - Cilantro Importer</title>
-  <style>
-    :root {
-      --accent: #4CAF50;
-      --accent-hover: #43a047;
-      --bg: #252525;
-      --card-bg: #222222;
-      --text: #222;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 24px 32px;
-      width: 320px;
-      box-sizing: border-box;
-    }
-
-    h2 {
-      margin-top: 0;
-      text-align: center;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-      margin-top: 14px;
-      font-size: 14px;
-      color: rgb(255, 255, 255);
-    }
-
-    input {
-      margin-top: 6px;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    input:focus {
-      border-color: var(--accent);
-    }
-
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px 0;
-      font-size: 15px;
-      font-weight: 600;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    button:hover {
-      background: var(--accent-hover);
-    }
-
-    #status {
-      margin-top: 12px;
-      text-align: center;
-      color: var(--accent);
-      font-size: 13px;
-      min-height: 18px;
-    }
-  </style>
+  <link rel="stylesheet" href="options.css">
 </head>
 <body>
-  <div class="card">
-    <h2>Cilantro Network Settings</h2>
+  <main class="panel" role="main">
+    <header class="panel__header">
+      <div class="brand" aria-hidden="true">
+        <span class="brand__mark"></span>
+        <span class="brand__word">cilantro</span>
+      </div>
+      <h1 class="panel__title">Network settings</h1>
+      <p class="panel__subtitle">Choose where assets are sent.</p>
+    </header>
 
-    <label>
-      Server IP:
-      <input type="text" id="ip" placeholder="127.0.0.1" value="localhost">
-    </label>
+    <section class="panel__body" aria-label="Connection settings">
+      <label class="field">
+        <span class="field__label">Server</span>
+        <input class="field__input" type="text" id="ip" placeholder="localhost" value="localhost" autocomplete="off" spellcheck="false" inputmode="text">
+      </label>
 
-    <label>
-      Port:
-      <input type="number" id="port" placeholder="5000" value="5000">
-    </label>
+      <label class="field">
+        <span class="field__label">Port</span>
+        <input class="field__input" type="number" id="port" placeholder="5000" value="5000" min="1" max="65535" inputmode="numeric">
+      </label>
 
-    <button id="save">💾 Save Settings</button>
-    <p id="status"></p>
-  </div>
+      <div class="actions">
+        <button class="btn" id="save" type="button">
+          <span class="btn__label">Save</span>
+          <span class="btn__kbd" aria-hidden="true">Ctrl+S</span>
+        </button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <footer class="panel__footer">
+      <p class="hint">Endpoint: <span class="mono" id="endpoint">http://localhost:5000</span></p>
+    </footer>
+  </main>
 
   <script src="options.js"></script>
 </body>

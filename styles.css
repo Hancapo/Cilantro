@@ -1,0 +1,49 @@
+/* Content-script styles for forge.plebmasters.de.
+   Keep selectors tight so we don't accidentally restyle the host site. */
+
+:root {
+  --cilantro-accent: #49d17a;
+  --cilantro-accent-2: #2fbf8a;
+}
+
+/* The injected button has id="cilantro" (see content.js). */
+#cilantro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 14px !important;
+  letter-spacing: 0.2px;
+  font-weight: 700 !important;
+  color: #04120b !important;
+  background:
+    radial-gradient(220px 80px at 18% 0%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
+    radial-gradient(220px 120px at 100% 30%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(135deg, var(--cilantro-accent), var(--cilantro-accent-2)) !important;
+  box-shadow:
+    0 10px 24px rgba(16, 255, 140, 0.14),
+    0 0 0 1px rgba(73, 209, 122, 0.32) inset !important;
+  transform: translateZ(0);
+  transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease;
+}
+
+#cilantro:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.06) brightness(1.02);
+}
+
+#cilantro:active {
+  transform: translateY(0px);
+  filter: brightness(0.99);
+}
+
+#cilantro:focus-visible {
+  outline: none;
+  box-shadow:
+    0 10px 24px rgba(16, 255, 140, 0.14),
+    0 0 0 4px rgba(73, 209, 122, 0.22),
+    0 0 0 1px rgba(73, 209, 122, 0.32) inset !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cilantro { transition: none; }
+}
